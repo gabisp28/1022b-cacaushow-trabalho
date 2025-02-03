@@ -47,10 +47,10 @@ class BancoMysql {
         const [result, fields] = await conn.query(sqlQuery,parametro);
         return result
     }
-    async excluirPagamento(Idpagamento:string){
+    async excluirPagamento(idpagamento:string){
         const conn = await this.getConnection()
         const sqlQuery = "DELETE FROM pagamento WHERE id = ?"
-        const parametro = [Idpagamento]
+        const parametro = [idpagamento]
         const [result, fields] = await conn.query(sqlQuery,parametro);
         return result
     }
