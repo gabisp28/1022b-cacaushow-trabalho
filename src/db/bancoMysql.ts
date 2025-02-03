@@ -1,15 +1,10 @@
 import mysql, { Connection } from 'mysql2/promise';
 
 class BancoMysql {
-    alterar(id: string, chocolate: { nome: any; descricao: any; preco: any; imagem: any; }) {
-        throw new Error('Method not implemented.');
-    }
-    excluir(id: string) {
-        throw new Error('Method not implemented.');
-    }
     listarPorId(id: string) {
         throw new Error('Method not implemented.');
     }
+    
     // Propriedade
     private conexao: Promise<Connection>;
 
@@ -47,23 +42,23 @@ class BancoMysql {
         const [result, fields] = await conn.query(sqlQuery,parametro);
         return result
     }
-    async excluirPagamento(idpagamento:string){
+    async excluirPagamento(Idpagamento:string){
         const conn = await this.getConnection()
         const sqlQuery = "DELETE FROM pagamento WHERE idpagamento = ?"
-        const parametro = [idpagamento]
+        const parametro = [Idpagamento]
         const [result, fields] = await conn.query(sqlQuery,parametro);
         return result
     }
     async excluirEstoque(itemId:string){
         const conn = await this.getConnection()
-        const sqlQuery = "DELETE FROM estoque WHERE id = ?"
+        const sqlQuery = "DELETE FROM estoque WHERE itemId = ?"
         const parametro = [itemId]
         const [result, fields] = await conn.query(sqlQuery,parametro);
         return result
     }
     async excluirPromocoes(idpromocao:string){
         const conn = await this.getConnection()
-        const sqlQuery = "DELETE FROM promocoes WHERE id = ?"
+        const sqlQuery = "DELETE FROM promocoes WHERE idpromocao = ?"
         const parametro = [idpromocao]
         const [result, fields] = await conn.query(sqlQuery,parametro);
         return result
@@ -82,10 +77,10 @@ class BancoMysql {
         const [result, fields] = await conn.query(sqlQuery,parametro);
         return result
     }
-    async alterarPagamento(Idpagamento:string,pagamento:{Idpagamento?:number,formapag:string,descricao:string,valor:string}){
+    async alterarPagamento(idpagamento:string,pagamento:{Idpagamento?:number,formapag:string,descricao:string,valor:string}){
         const conn = await this.getConnection()
         const sqlQuery = "UPDATE pagamento SET formapag=?,descricao=?,valor=? WHERE idpagamento = ?"
-        const parametro = [pagamento.formapag,pagamento.descricao,pagamento.valor,Idpagamento]
+        const parametro = [pagamento.formapag,pagamento.descricao,pagamento.valor,idpagamento]
         const [result, fields] = await conn.query(sqlQuery,parametro);
         return result
     }
