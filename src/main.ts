@@ -137,7 +137,7 @@ app.post("/cliente",async(req,res)=>{
     }
 });
 
-app.delete("/clientes/:id",async (req,res)=>{
+app.delete("/cliente/:id",async (req,res)=>{
     console.log("Tentando excluir o cliente com id:",req.params.id)
     try{
         const sqlQuery = "DELETE FROM clientes WHERE id = ?"
@@ -154,7 +154,7 @@ app.delete("/clientes/:id",async (req,res)=>{
     }
 });
 
-app.put("/clientes/:id",async (req,res)=>{
+app.put("/cliente/:id",async (req,res)=>{
     console.log("Tentando alterar o cliente com id:",req.params.id)
     try{
         const {nome,descricao,preco,imagem} = req.body
@@ -215,7 +215,7 @@ app.post("/pagamento",async(req,res)=>{
 app.delete("/pagamento/:id",async (req,res)=>{
     console.log("Tentando excluir o pagamento com id:",req.params.id)
     try{
-        const sqlQuery = "DELETE FROM pagamento WHERE id = ?"
+        const sqlQuery = "DELETE FROM pagamento WHERE idpagamento = ?"
         const parametro = [req.params.id]
 
         const banco = new BancoMysql();
