@@ -212,10 +212,10 @@ app.post("/pagamento",async(req,res)=>{
     }
 });
 
-app.delete("/pagamentos/:id",async (req,res)=>{
+app.delete("/pagamento/:id",async (req,res)=>{
     console.log("Tentando excluir o pagamento com id:",req.params.id)
     try{
-        const sqlQuery = "DELETE FROM pagamentos WHERE id = ?"
+        const sqlQuery = "DELETE FROM pagamento WHERE id = ?"
         const parametro = [req.params.id]
 
         const banco = new BancoMysql();
@@ -229,7 +229,7 @@ app.delete("/pagamentos/:id",async (req,res)=>{
     }
 });
 
-app.put("/pagamentos/:id",async (req,res)=>{
+app.put("/pagamento/:id",async (req,res)=>{
     console.log("Tentando alterar o pagamento com id:",req.params.id)
     try{
         const {nome,descricao,preco,imagem} = req.body
