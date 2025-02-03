@@ -145,7 +145,7 @@ app.delete("/clientes/:id",async (req,res)=>{
 
         const banco = new BancoMysql();
 
-        const result = await banco.excluir(req.params.id)
+        const result = await banco.excluirCliente(req.params.id)
 
         res.status(200).send(result)
     }catch(e){
@@ -220,7 +220,7 @@ app.delete("/pagamento/:id",async (req,res)=>{
 
         const banco = new BancoMysql();
 
-        const result = await banco.excluir(req.params.id)
+        const result = await banco.excluirPagamento(req.params.id)
 
         res.status(200).send(result)
     }catch(e){
@@ -233,7 +233,7 @@ app.put("/pagamento/:id",async (req,res)=>{
     console.log("Tentando alterar o pagamento com id:",req.params.id)
     try{
         const {nome,descricao,preco,imagem} = req.body
-        //const sqlQuery = "UPDATE pagamentos SET nome=?,descricao=?,preco=?,imagem=? WHERE id = ?"
+        //const sqlQuery = "UPDATE pagamento SET nome=?,descricao=?,preco=?,imagem=? WHERE id = ?"
         const pagamento = {nome,descricao,preco,imagem}
 
         const banco = new BancoMysql();
